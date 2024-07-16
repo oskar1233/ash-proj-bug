@@ -1,6 +1,6 @@
 import Config
 
-config :helpdesk, ash_domains: [Helpdesk.Support]
+config :helpdesk, ash_domains: [Helpdesk.Support], ecto_repos: [Helpdesk.Repo]
 
 config :spark,
   formatter: [
@@ -25,3 +25,15 @@ config :spark,
     ],
     "Ash.Domain": [section_order: [:resources, :policies, :authorization, :domain, :execution]]
   ]
+
+config :helpdesk, Helpdesk.Repo,
+  socket_dir: nil,
+  username: "postgres",
+  password: "postgres",
+  hostname: "localhost",
+  port: 7432,
+  database: "helpdesk_dev",
+  stacktrace: true,
+  show_sensitive_data_on_connection_error: true,
+  pool_size: 10
+

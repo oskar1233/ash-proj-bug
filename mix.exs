@@ -15,6 +15,7 @@ defmodule Helpdesk.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
+      mod: {Helpdesk.Application, []},
       extra_applications: [:logger]
     ]
   end
@@ -24,7 +25,8 @@ defmodule Helpdesk.MixProject do
     [
       {:picosat_elixir, "~> 0.2"},
       {:ash, "~> 3.0"},
-      {:igniter, "~> 0.3"}
+      {:igniter, "~> 0.3"},
+      {:ash_postgres, "~> 2.0"}
       # {:dep_from_hexpm, "~> 0.3.0"},
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
     ]
