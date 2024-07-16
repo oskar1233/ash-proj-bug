@@ -1,5 +1,7 @@
 import Config
 
+config :helpdesk, ash_domains: [Helpdesk.Support]
+
 config :spark,
   formatter: [
     remove_parens?: true,
