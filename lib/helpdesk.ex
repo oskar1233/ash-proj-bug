@@ -3,16 +3,17 @@ defmodule Helpdesk do
   Documentation for `Helpdesk`.
   """
 
-  @doc """
-  Hello world.
+  def test do
+    {:ok, ticket} = Ash.create(Helpdesk.Support.Ticket, %{subject: "test"})
 
-  ## Examples
+    {:ok, updated_ticket} =
+      ticket
+      |> Ash.Changeset.for_update(:update, %{"subject" => "updated sub"})
+      |> Ash.Changeset.after_action(fn _, _ ->
+        raise "Fail"
+      end)
+      |> Ash.update()
 
-      iex> Helpdesk.hello()
-      :world
-
-  """
-  def hello do
-    :world
+    updated_ticket
   end
 end
